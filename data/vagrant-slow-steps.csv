@@ -1,0 +1,6 @@
+id,step,entry,delta
+799,step-build,wheel for uwsgi (setup.py): finished with status 'done',8.2145
+770,step-build,,3.4227
+761,step-analyze,SBOM from previous image,3.2822
+769,step-build,setuptools 68.0.0 and wheel 0.42.0,2.4515
+762,step-build,,2.3987

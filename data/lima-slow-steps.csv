@@ -1,0 +1,15 @@
+id,step,entry,delta
+12,step-export,"unsuccessful cred copy: "".docker"" from ""/tekton/creds"" to ""/tekton/home"": unable to open destination: open /tekton/home/.docker/config.json: permission denied",26.0401
+10,step-analyze,"unsuccessful cred copy: "".docker"" from ""/tekton/creds"" to ""/tekton/home"": unable to open destination: open /tekton/home/.docker/config.json: permission denied",25.6856
+8,step-copy-builder-to-tmp,"unsuccessful cred copy: "".docker"" from ""/tekton/creds"" to ""/tekton/home"": unable to open destination: open /tekton/home/.docker/config.json: permission denied",13.5667
+3,place-scripts,script /tekton/scripts/script-0-6t5m7,13.4415
+9,step-copy-stack-toml,"unsuccessful cred copy: "".docker"" from ""/tekton/creds"" to ""/tekton/home"": unable to open destination: open /tekton/home/.docker/config.json: permission denied",13.295
+11,step-restore,"unsuccessful cred copy: "".docker"" from ""/tekton/creds"" to ""/tekton/home"": unable to open destination: open /tekton/home/.docker/config.json: permission denied",12.8249
+758,step-analyze,SBOM from previous image,8.2674
+796,step-build,wheel for uwsgi (setup.py): finished with status 'done',8.193
+767,step-build,,5.5147
+808,step-export,layer 'heroku/python:dependencies' ,4.7302
+766,step-build,setuptools 68.0.0 and wheel 0.42.0,3.4393
+27,step-clone,"@ 514b1ea3726070bb15af55ec7ce5e46703c10aa4 (grafted, HEAD) in path /workspace/""}",2.3807
+759,step-build,,2.2679
+13,step-clone,'=' true ],2.2411

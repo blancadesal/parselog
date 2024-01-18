@@ -1,0 +1,827 @@
+[place-tools] 2024-01-18T09:58:37.956146272Z 2024/01/18 09:58:37 Copied /ko-app/entrypoint to /tekton/bin/entrypoint
+[step-init] 2024-01-18T09:58:38.696694646Z 2024/01/18 09:58:38 Setup /step directories
+[place-scripts] 2024-01-18T09:58:40.217461983Z 2024/01/18 09:58:40 Decoded script /tekton/scripts/script-0-n6xcb
+[place-scripts] 2024-01-18T09:58:40.229211992Z 2024/01/18 09:58:40 Decoded script /tekton/scripts/script-2-98hm4
+[place-scripts] 2024-01-18T09:58:40.240816195Z 2024/01/18 09:58:40 Decoded script /tekton/scripts/script-3-hf9dm
+[place-scripts] 2024-01-18T09:58:40.253379884Z 2024/01/18 09:58:40 Decoded script /tekton/scripts/script-9-5q2h9
+[place-scripts] 2024-01-18T09:58:40.265365185Z 2024/01/18 09:58:40 Decoded script /tekton/scripts/script-11-zt7kn
+[step-clone] 2024-01-18T09:58:48.751611298Z + '[' false '=' true ]
+[step-clone] 2024-01-18T09:58:48.751700482Z + '[' false '=' true ]
+[step-clone] 2024-01-18T09:58:48.752741809Z + '[' '$(workspaces.ssl-ca-directory.bound)' '=' true ]
+[step-clone] 2024-01-18T09:58:48.752787285Z + CHECKOUT_DIR=/workspace/
+[step-clone] 2024-01-18T09:58:48.752795429Z + '[' true '=' true ]
+[step-clone] 2024-01-18T09:58:48.752800465Z + cleandir
+[step-clone] 2024-01-18T09:58:48.752805179Z + '[' -d /workspace/ ]
+[step-clone] 2024-01-18T09:58:48.752809832Z + rm -rf '/workspace//*'
+[step-clone] 2024-01-18T09:58:48.755112844Z + rm -rf '/workspace//.[!.]*'
+[step-clone] 2024-01-18T09:58:48.756672917Z + rm -rf '/workspace//..?*'
+[step-clone] 2024-01-18T09:58:48.758612833Z + test -z
+[step-clone] 2024-01-18T09:58:48.758634776Z + test -z
+[step-clone] 2024-01-18T09:58:48.758646592Z + test -z
+[step-clone] 2024-01-18T09:58:48.758718401Z + /ko-app/git-init '-url=https://gitlab.wikimedia.org/toolforge-repos/wm-lol' '-revision=' '-refspec=' '-path=/workspace/' '-sslVerify=true' '-submodules=true' '-depth=1' '-sparseCheckoutDirectories='
+[step-clone] 2024-01-18T09:58:50.405134554Z {"level":"info","ts":1705571930.4047015,"caller":"git/git.go:170","msg":"Successfully cloned https://gitlab.wikimedia.org/toolforge-repos/wm-lol @ 514b1ea3726070bb15af55ec7ce5e46703c10aa4 (grafted, HEAD) in path /workspace/"}
+[step-clone] 2024-01-18T09:58:50.447231892Z {"level":"info","ts":1705571930.447143,"caller":"git/git.go:209","msg":"Successfully initialized and updated submodules in path /workspace/"}
+[step-clone] 2024-01-18T09:58:50.454212707Z + cd /workspace/
+[step-clone] 2024-01-18T09:58:50.454920883Z + git rev-parse HEAD
+[step-clone] 2024-01-18T09:58:50.456377354Z + RESULT_SHA=514b1ea3726070bb15af55ec7ce5e46703c10aa4
+[step-clone] 2024-01-18T09:58:50.456397368Z + EXIT_CODE=0
+[step-clone] 2024-01-18T09:58:50.456401248Z + '[' 0 '!=' 0 ]
+[step-copy-builder-to-tmp] 2024-01-18T09:58:41.562865410Z 2024/01/18 09:58:41 warning: unsuccessful cred copy: ".docker" from "/tekton/creds" to "/tekton/home": unable to open destination: open /tekton/home/.docker/config.json: permission denied
+[step-copy-builder-to-tmp] 2024-01-18T09:58:50.570902331Z + cp -a /cnb/buildpacks /tmp_builder/
+[step-copy-builder-to-tmp] 2024-01-18T09:58:50.696612262Z + cp /cnb/order.toml /tmp_builder/
+[step-prepare] 2024-01-18T09:58:51.700558431Z > Setting permissions on '/cache'...
+[step-prepare] 2024-01-18T09:58:51.710902359Z > Setting permissions on '/tekton/home'...
+[step-prepare] 2024-01-18T09:58:51.717963628Z > Setting permissions on '/layers'...
+[step-prepare] 2024-01-18T09:58:51.719841202Z > Setting permissions on '/workspace'...
+[step-prepare] 2024-01-18T09:58:51.725468932Z > Parsing additional configuration...
+[step-prepare] 2024-01-18T09:58:51.725834190Z -> Parsing env variables...
+[step-prepare] 2024-01-18T09:58:51.727135644Z > Processing any environment variables...
+[step-prepare] 2024-01-18T09:58:51.727295162Z --> Creating 'env' directory: /platform/env
+[step-inject-buildpacks] 2024-01-18T09:58:51.819296667Z + set -o nounset
+[step-inject-buildpacks] 2024-01-18T09:58:51.819573361Z + set -o errexit
+[step-inject-buildpacks] 2024-01-18T09:58:51.819733224Z + set -o pipefail
+[step-inject-buildpacks] 2024-01-18T09:58:51.819936123Z + JSON_TOML_URL=https://github.com/pelletier/go-toml/releases/download/v2.1.1/jsontoml_2.1.1_linux_amd64.tar.xz
+[step-inject-buildpacks] 2024-01-18T09:58:51.820541166Z + TOML_JSON_URL=https://github.com/pelletier/go-toml/releases/download/v2.1.1/tomljson_2.1.1_linux_amd64.tar.xz
+[step-inject-buildpacks] 2024-01-18T09:58:51.820739115Z + JQ_URL=https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+[step-inject-buildpacks] 2024-01-18T09:58:51.821562905Z + main
+[step-inject-buildpacks] 2024-01-18T09:58:51.821823084Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:51.822171731Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:51.822397200Z + download_parsing_tools
+[step-inject-buildpacks] 2024-01-18T09:58:51.823060471Z + wget -O - https://github.com/pelletier/go-toml/releases/download/v2.1.1/jsontoml_2.1.1_linux_amd64.tar.xz
+[step-inject-buildpacks] 2024-01-18T09:58:51.823158438Z + tar xvJ
+[step-inject-buildpacks] 2024-01-18T09:58:51.828732051Z Connecting to github.com (140.82.121.4:443)
+[step-inject-buildpacks] 2024-01-18T09:58:52.110863603Z Connecting to objects.githubusercontent.com (185.199.108.133:443)
+[step-inject-buildpacks] 2024-01-18T09:58:52.543484189Z writing to stdout
+[step-inject-buildpacks] 2024-01-18T09:58:52.545867734Z jsontoml
+[step-inject-buildpacks] 2024-01-18T09:58:52.637598078Z -                    100% |********************************| 1531k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:52.637618015Z written to stdout
+[step-inject-buildpacks] 2024-01-18T09:58:52.642789297Z + wget -O - https://github.com/pelletier/go-toml/releases/download/v2.1.1/tomljson_2.1.1_linux_amd64.tar.xz
+[step-inject-buildpacks] 2024-01-18T09:58:52.642806853Z + tar xvJ
+[step-inject-buildpacks] 2024-01-18T09:58:52.645505392Z Connecting to github.com (140.82.121.3:443)
+[step-inject-buildpacks] 2024-01-18T09:58:52.925530176Z Connecting to objects.githubusercontent.com (185.199.111.133:443)
+[step-inject-buildpacks] 2024-01-18T09:58:53.338418963Z writing to stdout
+[step-inject-buildpacks] 2024-01-18T09:58:53.341472753Z tomljson
+[step-inject-buildpacks] 2024-01-18T09:58:53.462178550Z -                    100% |********************************| 1597k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:53.462195466Z written to stdout
+[step-inject-buildpacks] 2024-01-18T09:58:53.469342821Z + wget -O jq https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+[step-inject-buildpacks] 2024-01-18T09:58:53.470728611Z Connecting to github.com (140.82.121.3:443)
+[step-inject-buildpacks] 2024-01-18T09:58:53.746426830Z Connecting to objects.githubusercontent.com (185.199.111.133:443)
+[step-inject-buildpacks] 2024-01-18T09:58:54.276889955Z saving to 'jq'
+[step-inject-buildpacks] 2024-01-18T09:58:54.322387567Z jq                   100% |********************************| 2265k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:54.322417309Z 'jq' saved
+[step-inject-buildpacks] 2024-01-18T09:58:54.322720366Z + chmod +x jq
+[step-inject-buildpacks] 2024-01-18T09:58:54.325094002Z + put_nodejs_at_the_end /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.325152446Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:54.325161796Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.325167370Z + local version
+[step-inject-buildpacks] 2024-01-18T09:58:54.326284572Z ++ ls /tmp_builder/buildpacks/heroku_nodejs
+[step-inject-buildpacks] 2024-01-18T09:58:54.327635984Z + version=2.5.0
+[step-inject-buildpacks] 2024-01-18T09:58:54.327783259Z + local procfile_version
+[step-inject-buildpacks] 2024-01-18T09:58:54.328980915Z ++ ls /tmp_builder/buildpacks/heroku_procfile
+[step-inject-buildpacks] 2024-01-18T09:58:54.330297551Z + procfile_version=2.0.2
+[step-inject-buildpacks] 2024-01-18T09:58:54.330481178Z + remove_group /tmp_builder/order.toml heroku/nodejs 2
+[step-inject-buildpacks] 2024-01-18T09:58:54.330940284Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.331386801Z + local id=heroku/nodejs
+[step-inject-buildpacks] 2024-01-18T09:58:54.331405771Z + local expected_length=2
+[step-inject-buildpacks] 2024-01-18T09:58:54.331855624Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:54.332845214Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:54.333996056Z + tmpdir=/tmp/tmp.EmaHIO
+[step-inject-buildpacks] 2024-01-18T09:58:54.334123834Z + local tmp_toml=/tmp/tmp.EmaHIO/tmp.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.335092371Z + ./tomljson /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.335123773Z + ./jq 'walk(if type=="object" and (.group|length)==2 and .group[0].id=="heroku/nodejs" then empty else . end)'
+[step-inject-buildpacks] 2024-01-18T09:58:54.335980491Z + ./jsontoml
+[step-inject-buildpacks] 2024-01-18T09:58:54.340027649Z + cp /tmp/tmp.EmaHIO/tmp.toml /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.341602703Z + chmod 644 /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.342941239Z + rm -rf /tmp/tmp.EmaHIO
+[step-inject-buildpacks] 2024-01-18T09:58:54.344270743Z + cat
+[step-inject-buildpacks] 2024-01-18T09:58:54.345534412Z + inject_dotnet /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.345607972Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:54.346352172Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:54.346381854Z + download_buildpack https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/dotnetcore-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip /tmp_builder/buildpacks/jincod_dotnetcore-buildpack/7.0.401/
+[step-inject-buildpacks] 2024-01-18T09:58:54.346530381Z + local url=https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/dotnetcore-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:54.346542278Z + local dest_dir=/tmp_builder/buildpacks/jincod_dotnetcore-buildpack/7.0.401/
+[step-inject-buildpacks] 2024-01-18T09:58:54.346545927Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:54.347662217Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:54.348540043Z + tmpdir=/tmp/tmp.pJBfIB
+[step-inject-buildpacks] 2024-01-18T09:58:54.348700657Z + cd /tmp/tmp.pJBfIB
+[step-inject-buildpacks] 2024-01-18T09:58:54.349162570Z + wget https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/dotnetcore-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:54.350976663Z Connecting to gitlab.wikimedia.org (208.80.153.8:443)
+[step-inject-buildpacks] 2024-01-18T09:58:55.120394195Z saving to 'dotnetcore-buildpack-move_to_api_0.10.zip'
+[step-inject-buildpacks] 2024-01-18T09:58:55.977215182Z dotnetcore-buildpack  48% |***************                 |  884k  0:00:01 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:56.123035577Z dotnetcore-buildpack 100% |********************************| 1810k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:56.123400694Z 'dotnetcore-buildpack-move_to_api_0.10.zip' saved
+[step-inject-buildpacks] 2024-01-18T09:58:56.125300295Z + unzip -- dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:56.129043506Z Archive:  dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:56.187825102Z    creating: dotnetcore-buildpack-move_to_api_0.10/
+[step-inject-buildpacks] 2024-01-18T09:58:56.187842834Z   inflating: dotnetcore-buildpack-move_to_api_0.10/.gitattributes
+[step-inject-buildpacks] 2024-01-18T09:58:56.187845963Z    creating: dotnetcore-buildpack-move_to_api_0.10/.github/
+[step-inject-buildpacks] 2024-01-18T09:58:56.187848111Z    creating: dotnetcore-buildpack-move_to_api_0.10/.github/workflows/
+[step-inject-buildpacks] 2024-01-18T09:58:56.187850246Z   inflating: dotnetcore-buildpack-move_to_api_0.10/.github/workflows/main.yml
+[step-inject-buildpacks] 2024-01-18T09:58:56.187852373Z    creating: dotnetcore-buildpack-move_to_api_0.10/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:56.187854505Z   inflating: dotnetcore-buildpack-move_to_api_0.10/bin/build
+[step-inject-buildpacks] 2024-01-18T09:58:56.187862699Z   inflating: dotnetcore-buildpack-move_to_api_0.10/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:56.187865273Z   inflating: dotnetcore-buildpack-move_to_api_0.10/bin/exports
+[step-inject-buildpacks] 2024-01-18T09:58:56.187867843Z   inflating: dotnetcore-buildpack-move_to_api_0.10/bin/release
+[step-inject-buildpacks] 2024-01-18T09:58:56.187873431Z   inflating: dotnetcore-buildpack-move_to_api_0.10/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.187879692Z   inflating: dotnetcore-buildpack-move_to_api_0.10/package.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.187882070Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/
+[step-inject-buildpacks] 2024-01-18T09:58:56.187884263Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/.gitattributes
+[step-inject-buildpacks] 2024-01-18T09:58:56.187887158Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/.github/
+[step-inject-buildpacks] 2024-01-18T09:58:56.189942052Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/.github/workflows/
+[step-inject-buildpacks] 2024-01-18T09:58:56.189954233Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/.github/workflows/main.yml
+[step-inject-buildpacks] 2024-01-18T09:58:56.189957666Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/.gitignore
+[step-inject-buildpacks] 2024-01-18T09:58:56.189960209Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/CHANGELOG.md
+[step-inject-buildpacks] 2024-01-18T09:58:56.189962684Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/CODE_OF_CONDUCT.md
+[step-inject-buildpacks] 2024-01-18T09:58:56.189965169Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/LICENSE
+[step-inject-buildpacks] 2024-01-18T09:58:56.189967636Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/Makefile
+[step-inject-buildpacks] 2024-01-18T09:58:56.189970199Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/README.md
+[step-inject-buildpacks] 2024-01-18T09:58:56.189973243Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:56.189975877Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/bin/compile
+[step-inject-buildpacks] 2024-01-18T09:58:56.189978335Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:56.189980809Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/bin/release
+[step-inject-buildpacks] 2024-01-18T09:58:56.189983247Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/lib/
+[step-inject-buildpacks] 2024-01-18T09:58:56.189985803Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/lib/utils
+[step-inject-buildpacks] 2024-01-18T09:58:56.189989897Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/profile/
+[step-inject-buildpacks] 2024-01-18T09:58:56.190539684Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/profile/aspnetcore-defaults.sh
+[step-inject-buildpacks] 2024-01-18T09:58:56.190561095Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/
+[step-inject-buildpacks] 2024-01-18T09:58:56.190564824Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/
+[step-inject-buildpacks] 2024-01-18T09:58:56.190567143Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/custom-procfile/
+[step-inject-buildpacks] 2024-01-18T09:58:56.190569333Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/custom-procfile/Procfile
+[step-inject-buildpacks] 2024-01-18T09:58:56.190571778Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/custom-procfile/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.190573928Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/custom-procfile/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.190576263Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/custom-procfile/Web.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.190578460Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnet-6.0/
+[step-inject-buildpacks] 2024-01-18T09:58:56.190580633Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnet-6.0/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.190582783Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnet-6.0/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.190584937Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnet-6.0/dotnet-6.0.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.192999484Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.1/
+[step-inject-buildpacks] 2024-01-18T09:58:56.193012074Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.1/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.193015403Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.1/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.193017971Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.1/dotnetcore-2.1.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.193020162Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.2/
+[step-inject-buildpacks] 2024-01-18T09:58:56.193029236Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.2/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.193031702Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.2/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.193045424Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2.2/dotnetcore-2.2.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.193047982Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2/
+[step-inject-buildpacks] 2024-01-18T09:58:56.193050495Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.193052660Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.194263372Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-2/dotnetcore-2.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.194273544Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.0/
+[step-inject-buildpacks] 2024-01-18T09:58:56.194276506Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.0/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.194278685Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.0/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.194280802Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.0/dotnetcore-3.0.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.194282943Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.1/
+[step-inject-buildpacks] 2024-01-18T09:58:56.194285248Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.1/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.194288785Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.1/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.194291085Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-3.1/dotnetcore-3.1.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.194293546Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-5.0/
+[step-inject-buildpacks] 2024-01-18T09:58:56.194295858Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-5.0/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.196270772Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-5.0/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.196282744Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/dotnetcore-5.0/dotnetcore-5.0.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.196285980Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/fsharp-dotnetcore-3.0/
+[step-inject-buildpacks] 2024-01-18T09:58:56.196288160Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/fsharp-dotnetcore-3.0/Program.fs
+[step-inject-buildpacks] 2024-01-18T09:58:56.196290464Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/fsharp-dotnetcore-3.0/dotnetcore-3.0.fsproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.196295523Z    creating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/local-tools/
+[step-inject-buildpacks] 2024-01-18T09:58:56.196298046Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/local-tools/Program.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.196344538Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/local-tools/Startup.cs
+[step-inject-buildpacks] 2024-01-18T09:58:56.196353300Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/local-tools/dotnet-tools.json
+[step-inject-buildpacks] 2024-01-18T09:58:56.196358014Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/fixtures/local-tools/local-tools.csproj
+[step-inject-buildpacks] 2024-01-18T09:58:56.196361697Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/run
+[step-inject-buildpacks] 2024-01-18T09:58:56.196365273Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/shunit2
+[step-inject-buildpacks] 2024-01-18T09:58:56.196369293Z   inflating: dotnetcore-buildpack-move_to_api_0.10/target/test/utils
+[step-inject-buildpacks] 2024-01-18T09:58:56.196324894Z + mkdir -p /tmp_builder/buildpacks/jincod_dotnetcore-buildpack/7.0.401//
+[step-inject-buildpacks] 2024-01-18T09:58:56.197829703Z + cp -a -- dotnetcore-buildpack-move_to_api_0.10/bin dotnetcore-buildpack-move_to_api_0.10/buildpack.toml dotnetcore-buildpack-move_to_api_0.10/package.toml dotnetcore-buildpack-move_to_api_0.10/target /tmp_builder/buildpacks/jincod_dotnetcore-buildpack/7.0.401//
+[step-inject-buildpacks] 2024-01-18T09:58:56.205312038Z + cd -
+[step-inject-buildpacks] 2024-01-18T09:58:56.205353857Z + rm -rf /tmp/tmp.pJBfIB
+[step-inject-buildpacks] 2024-01-18T09:58:56.205312043Z /
+[step-inject-buildpacks] 2024-01-18T09:58:56.208524691Z + local procfile_version
+[step-inject-buildpacks] 2024-01-18T09:58:56.208701423Z ++ ls /tmp_builder/buildpacks/heroku_procfile
+[step-inject-buildpacks] 2024-01-18T09:58:56.209577169Z + procfile_version=2.0.2
+[step-inject-buildpacks] 2024-01-18T09:58:56.209589358Z + add_new_group /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.209596191Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.209600847Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:56.210277103Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:56.211168822Z + tmpdir=/tmp/tmp.CGkDKf
+[step-inject-buildpacks] 2024-01-18T09:58:56.211302439Z + local tmp_toml=/tmp/tmp.CGkDKf/tmp.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.211669110Z + cat
+[step-inject-buildpacks] 2024-01-18T09:58:56.212648381Z + cat /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.213479744Z + cp /tmp/tmp.CGkDKf/tmp.toml /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.214345040Z + chmod 644 /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.215021327Z + rm -rf /tmp/tmp.CGkDKf
+[step-inject-buildpacks] 2024-01-18T09:58:56.215941107Z + inject_rust /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.215957210Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:56.215961372Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:56.215964951Z + download_buildpack https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/rust-buildpack/-/archive/move_to_api_0.10/rust-buildpack-move_to_api_0.10.zip /tmp_builder/buildpacks/emk_rust/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:56.216033296Z + local url=https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/rust-buildpack/-/archive/move_to_api_0.10/rust-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:56.216039838Z + local dest_dir=/tmp_builder/buildpacks/emk_rust/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:56.216042390Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:56.216937071Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:56.217839491Z + tmpdir=/tmp/tmp.pjiLKE
+[step-inject-buildpacks] 2024-01-18T09:58:56.217851102Z + cd /tmp/tmp.pjiLKE
+[step-inject-buildpacks] 2024-01-18T09:58:56.217877206Z + wget https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/rust-buildpack/-/archive/move_to_api_0.10/rust-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:56.379447292Z Connecting to gitlab.wikimedia.org (208.80.153.8:443)
+[step-inject-buildpacks] 2024-01-18T09:58:57.127036813Z saving to 'rust-buildpack-move_to_api_0.10.zip'
+[step-inject-buildpacks] 2024-01-18T09:58:57.128418945Z rust-buildpack-move_ 100% |********************************|  6408  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:57.129182859Z 'rust-buildpack-move_to_api_0.10.zip' saved
+[step-inject-buildpacks] 2024-01-18T09:58:57.136649286Z + unzip -- rust-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:57.141536707Z Archive:  rust-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:57.147925704Z    creating: rust-buildpack-move_to_api_0.10/
+[step-inject-buildpacks] 2024-01-18T09:58:57.147987895Z   inflating: rust-buildpack-move_to_api_0.10/.gitignore
+[step-inject-buildpacks] 2024-01-18T09:58:57.148005791Z   inflating: rust-buildpack-move_to_api_0.10/README.md
+[step-inject-buildpacks] 2024-01-18T09:58:57.148018638Z    creating: rust-buildpack-move_to_api_0.10/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:57.148030776Z   inflating: rust-buildpack-move_to_api_0.10/bin/build
+[step-inject-buildpacks] 2024-01-18T09:58:57.148042823Z   inflating: rust-buildpack-move_to_api_0.10/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:57.148054920Z   inflating: rust-buildpack-move_to_api_0.10/bin/exports
+[step-inject-buildpacks] 2024-01-18T09:58:57.148068002Z   inflating: rust-buildpack-move_to_api_0.10/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.148080156Z   inflating: rust-buildpack-move_to_api_0.10/package.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.148092163Z    creating: rust-buildpack-move_to_api_0.10/target/
+[step-inject-buildpacks] 2024-01-18T09:58:57.148104104Z    creating: rust-buildpack-move_to_api_0.10/target/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:57.148142666Z   inflating: rust-buildpack-move_to_api_0.10/target/bin/compile
+[step-inject-buildpacks] 2024-01-18T09:58:57.148156050Z   inflating: rust-buildpack-move_to_api_0.10/target/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:57.150481934Z + mkdir -p /tmp_builder/buildpacks/emk_rust/0.1//
+[step-inject-buildpacks] 2024-01-18T09:58:57.154377353Z + cp -a -- rust-buildpack-move_to_api_0.10/README.md rust-buildpack-move_to_api_0.10/bin rust-buildpack-move_to_api_0.10/buildpack.toml rust-buildpack-move_to_api_0.10/package.toml rust-buildpack-move_to_api_0.10/target /tmp_builder/buildpacks/emk_rust/0.1//
+[step-inject-buildpacks] 2024-01-18T09:58:57.158584252Z /
+[step-inject-buildpacks] 2024-01-18T09:58:57.158596485Z + cd -
+[step-inject-buildpacks] 2024-01-18T09:58:57.158721915Z + rm -rf /tmp/tmp.pjiLKE
+[step-inject-buildpacks] 2024-01-18T09:58:57.163278198Z + local procfile_version
+[step-inject-buildpacks] 2024-01-18T09:58:57.165351542Z ++ ls /tmp_builder/buildpacks/heroku_procfile
+[step-inject-buildpacks] 2024-01-18T09:58:57.167256067Z + procfile_version=2.0.2
+[step-inject-buildpacks] 2024-01-18T09:58:57.167347626Z + add_new_group /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.167357107Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.167362123Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:57.177010225Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:57.177031079Z + tmpdir=/tmp/tmp.BdOJKi
+[step-inject-buildpacks] 2024-01-18T09:58:57.177036220Z + local tmp_toml=/tmp/tmp.BdOJKi/tmp.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.177039536Z + cat
+[step-inject-buildpacks] 2024-01-18T09:58:57.177043419Z + cat /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.177086498Z + cp /tmp/tmp.BdOJKi/tmp.toml /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.177091375Z + chmod 644 /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.177094721Z + rm -rf /tmp/tmp.BdOJKi
+[step-inject-buildpacks] 2024-01-18T09:58:57.178011545Z + inject_clojure /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.178025948Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:57.178030557Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:57.178038902Z + download_buildpack https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/clojure-buildpack/-/archive/move_to_api_0.10/clojure-buildpack-move_to_api_0.10.zip /tmp_builder/buildpacks/heroku_clojure/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:57.178094420Z + local url=https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/clojure-buildpack/-/archive/move_to_api_0.10/clojure-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:57.178103661Z + local dest_dir=/tmp_builder/buildpacks/heroku_clojure/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:57.178107392Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:57.179938069Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:57.180326056Z + tmpdir=/tmp/tmp.InpEgm
+[step-inject-buildpacks] 2024-01-18T09:58:57.180338306Z + cd /tmp/tmp.InpEgm
+[step-inject-buildpacks] 2024-01-18T09:58:57.180342937Z + wget https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/clojure-buildpack/-/archive/move_to_api_0.10/clojure-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:57.182913649Z Connecting to gitlab.wikimedia.org (208.80.153.8:443)
+[step-inject-buildpacks] 2024-01-18T09:58:57.898379250Z saving to 'clojure-buildpack-move_to_api_0.10.zip'
+[step-inject-buildpacks] 2024-01-18T09:58:58.892855525Z clojure-buildpack-mo  79% |*************************       | 1430k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:58.907200734Z clojure-buildpack-mo 100% |********************************| 1791k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:58:58.907266370Z 'clojure-buildpack-move_to_api_0.10.zip' saved
+[step-inject-buildpacks] 2024-01-18T09:58:58.910082717Z + unzip -- clojure-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:58.913723799Z Archive:  clojure-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:58.973892198Z    creating: clojure-buildpack-move_to_api_0.10/
+[step-inject-buildpacks] 2024-01-18T09:58:58.973930760Z   inflating: clojure-buildpack-move_to_api_0.10/.gitignore
+[step-inject-buildpacks] 2024-01-18T09:58:58.973934268Z    creating: clojure-buildpack-move_to_api_0.10/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:58.973936527Z   inflating: clojure-buildpack-move_to_api_0.10/bin/build
+[step-inject-buildpacks] 2024-01-18T09:58:58.973938675Z   inflating: clojure-buildpack-move_to_api_0.10/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:58.973947173Z   inflating: clojure-buildpack-move_to_api_0.10/bin/exports
+[step-inject-buildpacks] 2024-01-18T09:58:58.973949466Z   inflating: clojure-buildpack-move_to_api_0.10/bin/release
+[step-inject-buildpacks] 2024-01-18T09:58:58.973951797Z   inflating: clojure-buildpack-move_to_api_0.10/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.973954028Z   inflating: clojure-buildpack-move_to_api_0.10/package.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.973956128Z    creating: clojure-buildpack-move_to_api_0.10/target/
+[step-inject-buildpacks] 2024-01-18T09:58:58.973958471Z   inflating: clojure-buildpack-move_to_api_0.10/target/CHANGELOG.md
+[step-inject-buildpacks] 2024-01-18T09:58:58.973960622Z   inflating: clojure-buildpack-move_to_api_0.10/target/LICENSE
+[step-inject-buildpacks] 2024-01-18T09:58:58.973962725Z   inflating: clojure-buildpack-move_to_api_0.10/target/README.md
+[step-inject-buildpacks] 2024-01-18T09:58:58.973964981Z    creating: clojure-buildpack-move_to_api_0.10/target/bin/
+[step-inject-buildpacks] 2024-01-18T09:58:58.973967187Z   inflating: clojure-buildpack-move_to_api_0.10/target/bin/compile
+[step-inject-buildpacks] 2024-01-18T09:58:58.973969288Z   inflating: clojure-buildpack-move_to_api_0.10/target/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:58:58.975088808Z   inflating: clojure-buildpack-move_to_api_0.10/target/bin/release
+[step-inject-buildpacks] 2024-01-18T09:58:58.975105399Z   inflating: clojure-buildpack-move_to_api_0.10/target/bin/test
+[step-inject-buildpacks] 2024-01-18T09:58:58.975108955Z   inflating: clojure-buildpack-move_to_api_0.10/target/bin/test-compile
+[step-inject-buildpacks] 2024-01-18T09:58:58.975111229Z   inflating: clojure-buildpack-move_to_api_0.10/target/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.975113539Z    creating: clojure-buildpack-move_to_api_0.10/target/lib/
+[step-inject-buildpacks] 2024-01-18T09:58:58.975115806Z   inflating: clojure-buildpack-move_to_api_0.10/target/lib/buildpack-stdlib-v7.sh
+[step-inject-buildpacks] 2024-01-18T09:58:58.975117919Z   inflating: clojure-buildpack-move_to_api_0.10/target/lib/common.sh
+[step-inject-buildpacks] 2024-01-18T09:58:58.975120020Z   inflating: clojure-buildpack-move_to_api_0.10/target/lib/lein.sh
+[step-inject-buildpacks] 2024-01-18T09:58:58.975122148Z    creating: clojure-buildpack-move_to_api_0.10/target/opt/
+[step-inject-buildpacks] 2024-01-18T09:58:58.975124256Z   inflating: clojure-buildpack-move_to_api_0.10/target/opt/lein1
+[step-inject-buildpacks] 2024-01-18T09:58:58.975126372Z   inflating: clojure-buildpack-move_to_api_0.10/target/opt/lein2
+[step-inject-buildpacks] 2024-01-18T09:58:58.975128625Z   inflating: clojure-buildpack-move_to_api_0.10/target/opt/profiles.clj
+[step-inject-buildpacks] 2024-01-18T09:58:58.975751370Z + mkdir -p /tmp_builder/buildpacks/heroku_clojure/0.1//
+[step-inject-buildpacks] 2024-01-18T09:58:58.976994610Z + cp -a -- clojure-buildpack-move_to_api_0.10/bin clojure-buildpack-move_to_api_0.10/buildpack.toml clojure-buildpack-move_to_api_0.10/package.toml clojure-buildpack-move_to_api_0.10/target /tmp_builder/buildpacks/heroku_clojure/0.1//
+[step-inject-buildpacks] 2024-01-18T09:58:58.981445156Z /
+[step-inject-buildpacks] 2024-01-18T09:58:58.981451025Z + cd -
+[step-inject-buildpacks] 2024-01-18T09:58:58.981467425Z + rm -rf /tmp/tmp.InpEgm
+[step-inject-buildpacks] 2024-01-18T09:58:58.983596615Z + local procfile_version
+[step-inject-buildpacks] 2024-01-18T09:58:58.984194175Z ++ ls /tmp_builder/buildpacks/heroku_procfile
+[step-inject-buildpacks] 2024-01-18T09:58:58.985101144Z + procfile_version=2.0.2
+[step-inject-buildpacks] 2024-01-18T09:58:58.985113965Z + add_new_group /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.985342806Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.985352710Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:58.985727780Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:58.986258494Z + tmpdir=/tmp/tmp.bNnODf
+[step-inject-buildpacks] 2024-01-18T09:58:58.986272612Z + local tmp_toml=/tmp/tmp.bNnODf/tmp.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.986277655Z + cat
+[step-inject-buildpacks] 2024-01-18T09:58:58.987069312Z + cat /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.988188483Z + cp /tmp/tmp.bNnODf/tmp.toml /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.989105428Z + chmod 644 /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.989942018Z + rm -rf /tmp/tmp.bNnODf
+[step-inject-buildpacks] 2024-01-18T09:58:58.990825979Z + inject_locales /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.990850304Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:58:58.990861591Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:58:58.990866537Z + download_buildpack https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/locale-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip /tmp_builder/buildpacks/heroku-community_locale/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:58.990905949Z + local url=https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/locale-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:58.990914708Z + local dest_dir=/tmp_builder/buildpacks/heroku-community_locale/0.1/
+[step-inject-buildpacks] 2024-01-18T09:58:58.990919616Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:58:58.991987349Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:58:58.992989464Z + tmpdir=/tmp/tmp.FCPNjj
+[step-inject-buildpacks] 2024-01-18T09:58:58.993004004Z + cd /tmp/tmp.FCPNjj
+[step-inject-buildpacks] 2024-01-18T09:58:58.993014566Z + wget https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/locale-buildpack/-/archive/move_to_api_0.10/dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:58:58.994693508Z Connecting to gitlab.wikimedia.org (208.80.153.8:443)
+[step-inject-buildpacks] 2024-01-18T09:58:59.712623600Z saving to 'dotnetcore-buildpack-move_to_api_0.10.zip'
+[step-inject-buildpacks] 2024-01-18T09:58:59.996116767Z dotnetcore-buildpack   2% |                                | 39447  0:00:45 ETA
+[step-inject-buildpacks] 2024-01-18T09:59:00.577782506Z dotnetcore-buildpack 100% |********************************| 1779k  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:59:00.578622804Z 'dotnetcore-buildpack-move_to_api_0.10.zip' saved
+[step-inject-buildpacks] 2024-01-18T09:59:00.583499474Z + unzip -- dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:00.587442084Z Archive:  dotnetcore-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:00.628445036Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/
+[step-inject-buildpacks] 2024-01-18T09:59:00.628461043Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/.gitignore
+[step-inject-buildpacks] 2024-01-18T09:59:00.628464623Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin/
+[step-inject-buildpacks] 2024-01-18T09:59:00.628467229Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin/build
+[step-inject-buildpacks] 2024-01-18T09:59:00.628469525Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:59:00.628471835Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin/exports
+[step-inject-buildpacks] 2024-01-18T09:59:00.628474065Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin/release
+[step-inject-buildpacks] 2024-01-18T09:59:00.628476302Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.628478533Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/package.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.628480781Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/
+[step-inject-buildpacks] 2024-01-18T09:59:00.630213227Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/.gitignore
+[step-inject-buildpacks] 2024-01-18T09:59:00.630232466Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/Dockerfile
+[step-inject-buildpacks] 2024-01-18T09:59:00.630236209Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/LICENSE
+[step-inject-buildpacks] 2024-01-18T09:59:00.630238676Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/Makefile
+[step-inject-buildpacks] 2024-01-18T09:59:00.630240943Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/README.md
+[step-inject-buildpacks] 2024-01-18T09:59:00.630245048Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/bin/
+[step-inject-buildpacks] 2024-01-18T09:59:00.630256860Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/bin/compile
+[step-inject-buildpacks] 2024-01-18T09:59:00.630259412Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:59:00.630261871Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/docker-compose.yml
+[step-inject-buildpacks] 2024-01-18T09:59:00.630264007Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/fixtures/
+[step-inject-buildpacks] 2024-01-18T09:59:00.630902567Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/fixtures/app/
+[step-inject-buildpacks] 2024-01-18T09:59:00.630912605Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/fixtures/app/.locales
+[step-inject-buildpacks] 2024-01-18T09:59:00.630915988Z    creating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/fixtures/env/
+[step-inject-buildpacks] 2024-01-18T09:59:00.630918339Z   inflating: locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target/fixtures/env/LANG
+[step-inject-buildpacks] 2024-01-18T09:59:00.631229097Z + mkdir -p /tmp_builder/buildpacks/heroku-community_locale/0.1//
+[step-inject-buildpacks] 2024-01-18T09:59:00.632520270Z + cp -a -- locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/bin locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/buildpack.toml locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/package.toml locale-buildpack-move_to_api_0.10-2efc2596edd75089f11d79a43cd547c520aee3e3/target /tmp_builder/buildpacks/heroku-community_locale/0.1//
+[step-inject-buildpacks] 2024-01-18T09:59:00.636822420Z + cd -
+[step-inject-buildpacks] 2024-01-18T09:59:00.636849751Z /
+[step-inject-buildpacks] 2024-01-18T09:59:00.636931144Z + rm -rf /tmp/tmp.FCPNjj
+[step-inject-buildpacks] 2024-01-18T09:59:00.638851612Z + local 'nodejs_group=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.638864336Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.638868161Z     id = "heroku-community/locale"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.638870710Z     version = "0.1"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.638873134Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639076897Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.639088183Z + add_entry_to_all_groups /tmp_builder/order.toml '[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639091442Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639093847Z     id = "heroku-community/locale"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639096063Z     version = "0.1"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639098265Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639100491Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.639299263Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.639955537Z + local 'group_entry=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639967315Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639970742Z     id = "heroku-community/locale"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639973009Z     version = "0.1"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639975544Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.639988687Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.640137192Z + sed -i 's|\[\[order\]\]|[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.640143005Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.640145331Z     id = "heroku-community/locale"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.640147489Z     version = "0.1"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.640149641Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.640609786Z     |' /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.641865343Z + inject_nodejs /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.642010516Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:59:00.642020641Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.642279714Z + local version
+[step-inject-buildpacks] 2024-01-18T09:59:00.642978908Z ++ ls /tmp_builder/buildpacks/heroku_nodejs
+[step-inject-buildpacks] 2024-01-18T09:59:00.643826747Z + version=2.5.0
+[step-inject-buildpacks] 2024-01-18T09:59:00.643961702Z + local 'nodejs_group=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.643989362Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.643993232Z     id = "heroku/nodejs"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.643995519Z     version = "2.5.0"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.643997703Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644159310Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.644765253Z + add_entry_to_all_groups /tmp_builder/order.toml '[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644775591Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644779021Z     id = "heroku/nodejs"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644781272Z     version = "2.5.0"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644783504Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.644835438Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.645320544Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.645486173Z + local 'group_entry=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645497526Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645500983Z     id = "heroku/nodejs"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645504050Z     version = "2.5.0"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645507707Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645511362Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:00.645740220Z + sed -i 's|\[\[order\]\]|[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645759310Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645764254Z     id = "heroku/nodejs"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645766920Z     version = "2.5.0"\
+[step-inject-buildpacks] 2024-01-18T09:59:00.645769467Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:00.646086579Z     |' /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.647533680Z + inject_aptfile /tmp_builder/buildpacks /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.647916560Z + local buildpacks_dir=/tmp_builder/buildpacks
+[step-inject-buildpacks] 2024-01-18T09:59:00.648179905Z + local order_toml=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:00.648779601Z + download_buildpack https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/apt-buildpack/-/archive/move_to_api_0.10/apt-buildpack-move_to_api_0.10.zip /tmp_builder/buildpacks/fagiani_apt/0.2.5/
+[step-inject-buildpacks] 2024-01-18T09:59:00.649178541Z + local url=https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/apt-buildpack/-/archive/move_to_api_0.10/apt-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:00.649672260Z + local dest_dir=/tmp_builder/buildpacks/fagiani_apt/0.2.5/
+[step-inject-buildpacks] 2024-01-18T09:59:00.650207577Z + local tmpdir
+[step-inject-buildpacks] 2024-01-18T09:59:00.650900430Z ++ mktemp -d
+[step-inject-buildpacks] 2024-01-18T09:59:00.651643310Z + tmpdir=/tmp/tmp.jpllNg
+[step-inject-buildpacks] 2024-01-18T09:59:00.652061156Z + cd /tmp/tmp.jpllNg
+[step-inject-buildpacks] 2024-01-18T09:59:00.652581223Z + wget https://gitlab.wikimedia.org/repos/cloud/toolforge/buildpacks/apt-buildpack/-/archive/move_to_api_0.10/apt-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:00.653847213Z Connecting to gitlab.wikimedia.org (208.80.153.8:443)
+[step-inject-buildpacks] 2024-01-18T09:59:01.358393236Z saving to 'apt-buildpack-move_to_api_0.10.zip'
+[step-inject-buildpacks] 2024-01-18T09:59:01.358415824Z apt-buildpack-move_t 100% |********************************| 11305  0:00:00 ETA
+[step-inject-buildpacks] 2024-01-18T09:59:01.358419615Z 'apt-buildpack-move_to_api_0.10.zip' saved
+[step-inject-buildpacks] 2024-01-18T09:59:01.358873103Z + unzip -- apt-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:01.359826663Z Archive:  apt-buildpack-move_to_api_0.10.zip
+[step-inject-buildpacks] 2024-01-18T09:59:01.360946279Z    creating: apt-buildpack-move_to_api_0.10/
+[step-inject-buildpacks] 2024-01-18T09:59:01.360978431Z    creating: apt-buildpack-move_to_api_0.10/.github/
+[step-inject-buildpacks] 2024-01-18T09:59:01.361116013Z    creating: apt-buildpack-move_to_api_0.10/.github/workflows/
+[step-inject-buildpacks] 2024-01-18T09:59:01.361123901Z   inflating: apt-buildpack-move_to_api_0.10/.github/workflows/release.yml
+[step-inject-buildpacks] 2024-01-18T09:59:01.361126825Z   inflating: apt-buildpack-move_to_api_0.10/LICENSE
+[step-inject-buildpacks] 2024-01-18T09:59:01.361129023Z   inflating: apt-buildpack-move_to_api_0.10/README.md
+[step-inject-buildpacks] 2024-01-18T09:59:01.361131644Z    creating: apt-buildpack-move_to_api_0.10/bin/
+[step-inject-buildpacks] 2024-01-18T09:59:01.361133773Z   inflating: apt-buildpack-move_to_api_0.10/bin/build
+[step-inject-buildpacks] 2024-01-18T09:59:01.361144341Z   inflating: apt-buildpack-move_to_api_0.10/bin/detect
+[step-inject-buildpacks] 2024-01-18T09:59:01.361146826Z   inflating: apt-buildpack-move_to_api_0.10/bin/runimage_installed.list
+[step-inject-buildpacks] 2024-01-18T09:59:01.361148989Z   inflating: apt-buildpack-move_to_api_0.10/buildpack.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.361151386Z   inflating: apt-buildpack-move_to_api_0.10/package.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.361358096Z + mkdir -p /tmp_builder/buildpacks/fagiani_apt/0.2.5//
+[step-inject-buildpacks] 2024-01-18T09:59:01.362385829Z + cp -a -- apt-buildpack-move_to_api_0.10/LICENSE apt-buildpack-move_to_api_0.10/README.md apt-buildpack-move_to_api_0.10/bin apt-buildpack-move_to_api_0.10/buildpack.toml apt-buildpack-move_to_api_0.10/package.toml /tmp_builder/buildpacks/fagiani_apt/0.2.5//
+[step-inject-buildpacks] 2024-01-18T09:59:01.363441162Z + cd -
+[step-inject-buildpacks] 2024-01-18T09:59:01.363495481Z + rm -rf /tmp/tmp.jpllNg
+[step-inject-buildpacks] 2024-01-18T09:59:01.363461121Z /
+[step-inject-buildpacks] 2024-01-18T09:59:01.365120274Z + local 'aptfile_group=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365133184Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365136704Z     id = "fagiani/apt"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365139026Z     version = "0.2.5"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365141229Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365143388Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:01.365145730Z + add_entry_to_all_groups /tmp_builder/order.toml '[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365148447Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365150744Z     id = "fagiani/apt"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365152886Z     version = "0.2.5"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365155063Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365157388Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:01.365159650Z + local toml_file=/tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.365176748Z + local 'group_entry=[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365193646Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365197053Z     id = "fagiani/apt"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365199403Z     version = "0.2.5"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365201564Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365203737Z     '
+[step-inject-buildpacks] 2024-01-18T09:59:01.365205913Z + sed -i 's|\[\[order\]\]|[[order]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365208073Z     [[order.group]]\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365210230Z     id = "fagiani/apt"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365212432Z     version = "0.2.5"\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365214618Z     optional = true\
+[step-inject-buildpacks] 2024-01-18T09:59:01.365216881Z     |' /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.367368625Z + echo '<------ Final order.toml'
+[step-inject-buildpacks] 2024-01-18T09:59:01.367380822Z + cat /tmp_builder/order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.367385943Z <------ Final order.toml
+[step-inject-buildpacks] 2024-01-18T09:59:01.368073922Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368084893Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368087995Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368090152Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368092257Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368094398Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368096882Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368099151Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368101312Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368103514Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368105688Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368107837Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368110170Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368112486Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368114664Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368116803Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368118941Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368121307Z     id = "heroku/clojure"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368123463Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368125614Z     api = "0.10"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368127755Z     optional = false
+[step-inject-buildpacks] 2024-01-18T09:59:01.368129884Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368137253Z     id = "heroku/procfile"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368139568Z     version = "2.0.2"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368141743Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368143919Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368146072Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368148185Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368150352Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368152485Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368154606Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368156757Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368158906Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368161052Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368163193Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368165322Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368167464Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368169611Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368171762Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368173886Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368176005Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368178149Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368180275Z     id = "emk/rust"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368182409Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368184539Z     api = "0.10"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368186668Z     optional = false
+[step-inject-buildpacks] 2024-01-18T09:59:01.368188775Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368190892Z     id = "heroku/procfile"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368193019Z     version = "2.0.2"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368195220Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368197413Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368199540Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368201722Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368203899Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368206019Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368208137Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368210285Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368212427Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368214568Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368216700Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368218858Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368221000Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368223132Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368225297Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368227421Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368229571Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368231717Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368233869Z     id = "jincod/dotnetcore-buildpack"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368236014Z     version = "7.0.401"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368238203Z     api = "0.10"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368241112Z     optional = false
+[step-inject-buildpacks] 2024-01-18T09:59:01.368243373Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368245500Z     id = "heroku/procfile"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368255739Z     version = "2.0.2"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368258404Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368260605Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368262756Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368264863Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368266973Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368269083Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368271198Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368273329Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368275457Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368277580Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368279720Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368281837Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368283958Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368286067Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368288184Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368290387Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368292501Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368294653Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368299986Z id = 'heroku/python'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368302276Z version = '0.8.0'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368304346Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368306513Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368308636Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368310789Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368312906Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368314939Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368317067Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368319205Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368321337Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368323459Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368325575Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368327724Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368329857Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368331967Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368334070Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368336179Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368338305Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368340485Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368342643Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368344775Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368346896Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368349020Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368351164Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368353261Z id = 'heroku/nodejs-engine'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368355378Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368357516Z version = '2.5.0'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368359534Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368361728Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368367454Z id = 'heroku/nodejs-yarn'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368370094Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368372251Z version = '2.5.0'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368374308Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368376463Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368378589Z id = 'heroku/jvm'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368380728Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368382907Z version = '4.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368384961Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368387118Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368389284Z id = 'heroku/ruby'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368391466Z version = '2.1.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368393518Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368395678Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368397814Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368400062Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368402215Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368404271Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368406443Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368408593Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368410730Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368412879Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368415022Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368417182Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368419337Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368421469Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368423606Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368425739Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368427880Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368430091Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368432263Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368434439Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368436590Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368438764Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368440907Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368443054Z id = 'heroku/java'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368445189Z version = '4.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368447232Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368449395Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368451549Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368453719Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368455875Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368460760Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368463080Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368465242Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368467348Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368469452Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368471595Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368473775Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368475910Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368478052Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368480179Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368482294Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368484398Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368486518Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368488747Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368490907Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368493014Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368495143Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368497285Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368499421Z id = 'heroku/scala'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368501558Z version = '4.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368503571Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368505714Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368507831Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368509972Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368512085Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368514108Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368516239Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368518383Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368520510Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368522656Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368524774Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368526890Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368529030Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368531185Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368533308Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368535409Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368537516Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368539657Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368541791Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368543921Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368546076Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368548190Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368550350Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368552504Z id = 'heroku/go'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368554659Z version = '0.1.12'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368556724Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368558867Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368561012Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368563140Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368565251Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368567268Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368569383Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368571519Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368573647Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368575773Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368577906Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368580020Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368582165Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368584286Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368586396Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368588512Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368590651Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368592788Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368594938Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368597059Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368599158Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368601323Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368605211Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368607688Z id = 'heroku/php'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368609858Z version = '0.1.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368611898Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368614038Z [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368616160Z id = 'heroku/procfile'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368620926Z optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368623174Z version = '2.0.2'
+[step-inject-buildpacks] 2024-01-18T09:59:01.368625326Z [[order]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368627509Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368629633Z     id = "fagiani/apt"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368631762Z     version = "0.2.5"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368633884Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368636017Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368638166Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368640305Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368642464Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368644634Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368646787Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368649022Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368651185Z     id = "heroku-community/locale"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368653375Z     version = "0.1"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368655510Z     optional = true
+[step-inject-buildpacks] 2024-01-18T09:59:01.368657656Z
+[step-inject-buildpacks] 2024-01-18T09:59:01.368659803Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368661931Z     id = "heroku/nodejs"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368664070Z     version = "2.5.0"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368666210Z     optional = false
+[step-inject-buildpacks] 2024-01-18T09:59:01.368668341Z     [[order.group]]
+[step-inject-buildpacks] 2024-01-18T09:59:01.368670462Z     id = "heroku/procfile"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368672585Z     version = "2.0.2"
+[step-inject-buildpacks] 2024-01-18T09:59:01.368674732Z     optional = true
+[step-copy-stack-toml] 2024-01-18T09:58:42.715044250Z 2024/01/18 09:58:42 warning: unsuccessful cred copy: ".docker" from "/tekton/creds" to "/tekton/home": unable to open destination: open /tekton/home/.docker/config.json: permission denied
+[step-detect] 2024-01-18T09:59:02.623064944Z Warning: no analyzed metadata found at path '/layers/analyzed.toml'
+[step-detect] 2024-01-18T09:59:02.669565396Z 2 of 4 buildpacks participating
+[step-detect] 2024-01-18T09:59:02.669588677Z heroku/python   0.8.0
+[step-detect] 2024-01-18T09:59:02.669592101Z heroku/procfile 2.0.2
+[step-analyze] 2024-01-18T09:58:44.455209205Z 2024/01/18 09:58:44 warning: unsuccessful cred copy: ".docker" from "/tekton/creds" to "/tekton/home": unable to open destination: open /tekton/home/.docker/config.json: permission denied
+[step-analyze] 2024-01-18T09:59:05.951758101Z Restoring data for SBOM from previous image
+[step-restore] 2024-01-18T09:58:45.333094259Z 2024/01/18 09:58:45 warning: unsuccessful cred copy: ".docker" from "/tekton/creds" to "/tekton/home": unable to open destination: open /tekton/home/.docker/config.json: permission denied
+[step-build] 2024-01-18T09:59:08.350475196Z
+[step-build] 2024-01-18T09:59:08.350521452Z [Determining Python version]
+[step-build] 2024-01-18T09:59:08.350540132Z No Python version specified, using the current default of Python 3.12.1.
+[step-build] 2024-01-18T09:59:08.350543811Z To use a different version, see: https://devcenter.heroku.com/articles/python-runtimes
+[step-build] 2024-01-18T09:59:08.350546672Z
+[step-build] 2024-01-18T09:59:08.350549707Z [Installing Python and packaging tools]
+[step-build] 2024-01-18T09:59:08.350619146Z Installing Python 3.12.1
+[step-build] 2024-01-18T09:59:10.802102714Z Installing pip 23.3.1, setuptools 68.0.0 and wheel 0.42.0
+[step-build] 2024-01-18T09:59:14.224812670Z
+[step-build] 2024-01-18T09:59:14.224832897Z [Installing dependencies using Pip]
+[step-build] 2024-01-18T09:59:14.226144363Z Running pip install
+[step-build] 2024-01-18T09:59:14.633777793Z Collecting flask (from -r requirements.txt (line 1))
+[step-build] 2024-01-18T09:59:14.693839315Z   Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+[step-build] 2024-01-18T09:59:14.745586183Z Collecting werkzeug (from -r requirements.txt (line 2))
+[step-build] 2024-01-18T09:59:14.748823522Z   Downloading werkzeug-3.0.1-py3-none-any.whl.metadata (4.1 kB)
+[step-build] 2024-01-18T09:59:14.785922099Z Collecting uwsgi (from -r requirements.txt (line 3))
+[step-build] 2024-01-18T09:59:14.790316383Z   Downloading uwsgi-2.0.23.tar.gz (810 kB)
+[step-build] 2024-01-18T09:59:14.965890327Z   Preparing metadata (setup.py): started
+[step-build] 2024-01-18T09:59:15.117082705Z   Preparing metadata (setup.py): finished with status 'done'
+[step-build] 2024-01-18T09:59:15.193308834Z Collecting Jinja2>=3.1.2 (from flask->-r requirements.txt (line 1))
+[step-build] 2024-01-18T09:59:15.198140817Z   Downloading Jinja2-3.1.3-py3-none-any.whl.metadata (3.3 kB)
+[step-build] 2024-01-18T09:59:15.227032267Z Collecting itsdangerous>=2.1.2 (from flask->-r requirements.txt (line 1))
+[step-build] 2024-01-18T09:59:15.231161784Z   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+[step-build] 2024-01-18T09:59:15.268366458Z Collecting click>=8.1.3 (from flask->-r requirements.txt (line 1))
+[step-build] 2024-01-18T09:59:15.271958428Z   Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+[step-build] 2024-01-18T09:59:15.321921534Z Collecting blinker>=1.6.2 (from flask->-r requirements.txt (line 1))
+[step-build] 2024-01-18T09:59:15.326488418Z   Downloading blinker-1.7.0-py3-none-any.whl.metadata (1.9 kB)
+[step-build] 2024-01-18T09:59:15.399298470Z Collecting MarkupSafe>=2.1.1 (from werkzeug->-r requirements.txt (line 2))
+[step-build] 2024-01-18T09:59:15.402683207Z   Downloading MarkupSafe-2.1.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.9 kB)
+[step-build] 2024-01-18T09:59:15.423536084Z Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+[step-build] 2024-01-18T09:59:15.445421806Z Downloading werkzeug-3.0.1-py3-none-any.whl (226 kB)
+[step-build] 2024-01-18T09:59:15.470449672Z Downloading blinker-1.7.0-py3-none-any.whl (13 kB)
+[step-build] 2024-01-18T09:59:15.487673476Z Downloading click-8.1.7-py3-none-any.whl (97 kB)
+[step-build] 2024-01-18T09:59:15.502681482Z Downloading Jinja2-3.1.3-py3-none-any.whl (133 kB)
+[step-build] 2024-01-18T09:59:15.517110648Z Downloading MarkupSafe-2.1.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (28 kB)
+[step-build] 2024-01-18T09:59:15.535675358Z Building wheels for collected packages: uwsgi
+[step-build] 2024-01-18T09:59:15.536952542Z   Building wheel for uwsgi (setup.py): started
+[step-build] 2024-01-18T09:59:23.751448928Z   Building wheel for uwsgi (setup.py): finished with status 'done'
+[step-build] 2024-01-18T09:59:23.755240160Z   Created wheel for uwsgi: filename=uWSGI-2.0.23-cp312-cp312-linux_x86_64.whl size=600386 sha256=ed604283fc12729b9f3014335f66077b09500e52118a7a6a401d6bdb1c067818
+[step-build] 2024-01-18T09:59:23.755702530Z   Stored in directory: /layers/heroku_python/pip-cache/wheels/1b/ec/ca/e5d59412ae7776eb3d5ab026e9883e7bf8e2684f3f1bf8a09d
+[step-build] 2024-01-18T09:59:23.757724885Z Successfully built uwsgi
+[step-build] 2024-01-18T09:59:23.801654648Z Installing collected packages: uwsgi, MarkupSafe, itsdangerous, click, blinker, werkzeug, Jinja2, flask
+[step-build] 2024-01-18T09:59:24.192521989Z Successfully installed Jinja2-3.1.3 MarkupSafe-2.1.3 blinker-1.7.0 click-8.1.7 flask-3.0.0 itsdangerous-2.1.2 uwsgi-2.0.23 werkzeug-3.0.1
+[step-build] 2024-01-18T09:59:24.274667284Z
+[step-build] 2024-01-18T09:59:24.274780985Z [Discovering process types]
+[step-build] 2024-01-18T09:59:24.276242305Z Procfile declares types -> web
+[step-fix-permissions] 2024-01-18T09:59:24.444701700Z > Setting permissions on '/layers'...
+[step-fix-permissions] 2024-01-18T09:59:24.706997979Z > Setting permissions on '/workspace'...
+[step-export] 2024-01-18T09:58:47.301791970Z 2024/01/18 09:58:47 warning: unsuccessful cred copy: ".docker" from "/tekton/creds" to "/tekton/home": unable to open destination: open /tekton/home/.docker/config.json: permission denied
+[step-export] 2024-01-18T09:59:25.384489183Z Reusing layers from image '172.19.0.1/tool-tf-test/tool-tf-test@sha256:1767bd9da090b1a89136622efe33edd4610cb8ab0d06602d81fbf3e0cb9ab0c0'
+[step-export] 2024-01-18T09:59:27.267905701Z Adding layer 'heroku/python:dependencies'
+[step-export] 2024-01-18T09:59:27.612791687Z Reusing layer 'heroku/python:python'
+[step-export] 2024-01-18T09:59:27.615117863Z Reusing layer 'buildpacksio/lifecycle:launch.sbom'
+[step-export] 2024-01-18T09:59:27.622631094Z Adding 1/1 app layer(s)
+[step-export] 2024-01-18T09:59:27.628983427Z Reusing layer 'buildpacksio/lifecycle:launcher'
+[step-export] 2024-01-18T09:59:27.631803014Z Adding layer 'buildpacksio/lifecycle:config'
+[step-export] 2024-01-18T09:59:27.633040294Z Reusing layer 'buildpacksio/lifecycle:process-types'
+[step-export] 2024-01-18T09:59:27.636516210Z Adding label 'io.buildpacks.lifecycle.metadata'
+[step-export] 2024-01-18T09:59:27.637965760Z Adding label 'io.buildpacks.build.metadata'
+[step-export] 2024-01-18T09:59:27.637978698Z Adding label 'io.buildpacks.project.metadata'
+[step-export] 2024-01-18T09:59:27.638803725Z Setting default process type 'web'
+[step-export] 2024-01-18T09:59:27.639140129Z Saving 172.19.0.1/tool-tf-test/tool-tf-test:latest...
+[step-export] 2024-01-18T09:59:27.861933946Z *** Images (sha256:3ab41a40d7f3a5136dd6bd160189c127162ad95d47949dcb9290633621609190):
+[step-export] 2024-01-18T09:59:27.862000147Z       172.19.0.1/tool-tf-test/tool-tf-test:latest
+[step-export] 2024-01-18T09:59:27.876316746Z Adding cache layer 'heroku/python:pip-cache'
+[step-export] 2024-01-18T09:59:27.878443027Z Adding cache layer 'heroku/python:python'
+[step-results] 2024-01-18T09:59:28.490372045Z Built image 172.19.0.1/tool-tf-test/tool-tf-test:latest@sha256:3ab41a40d7f3a5136dd6bd160189c127162ad95d47949dcb9290633621609190
