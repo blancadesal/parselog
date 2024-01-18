@@ -41,17 +41,16 @@ def parselog(input_file, output_file):
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["id", "step", "timestamp", "entry", "delta"])
 
-        prev_time = parse_timestamp(sorted_logs[0]) if sorted_logs else None
+        first_time = parse_timestamp(sorted_logs[0]) if sorted_logs else None
         index = 1  # Initialize the index counter
         for log in sorted_logs:
             try:
                 current_time = parse_timestamp(log)
                 step_name, message = extract_step_and_message(log)
-                delta = (current_time - prev_time).total_seconds() if prev_time else 0
+                delta = (current_time - first_time).total_seconds() if first_time else 0
                 formatted_delta = f"{delta:.4f}"
                 csv_writer.writerow([index, step_name, current_time.isoformat(), message, formatted_delta])
-                prev_time = current_time
-                index += 1  # Increment the index for the next entry
+                index += 1
             except ValueError as e:
                 click.echo(f"Warning: {e}", err=True)
 
